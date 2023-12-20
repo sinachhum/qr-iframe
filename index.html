@@ -1,8 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <body>
-    <h1>Web Share in third-party iframes</h1>
-    <!-- The embedding page is hosted on https://example.com/index.html. -->
-    <iframe allow="web-share" src="https://qr-indol.vercel.app/share-iframe.html"></iframe>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styled Button and Mobile Keyboard Detection</title>
+  <style>
+    #submitButton {
+      display: none;
+      background-color: #4caf50;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="myForm">
+    <input type="text" id="myInput" placeholder="Type something...">
+    <button type="button" id="submitButton">Submit</button>
+  </form>
+
+  <script>
+    var inputField = document.getElementById('myInput');
+    var submitButton = document.getElementById('submitButton');
+    var form = document.getElementById('myForm');
+
+    // Listen for the focus event on the input field
+    inputField.addEventListener('focus', function() {
+      // Show the submit button
+      submitButton.style.display = 'block';
+    });
+
+    // Listen for the blur event on the input field
+    inputField.addEventListener('blur', function() {
+      // Hide the submit button
+      submitButton.style.display = 'none';
+    });
+
+    // Listen for the click event on the submit button
+    submitButton.addEventListener('click', function() {
+      // Trigger the form submission
+      form.submit();
+    });
+  </script>
+
+</body>
 </html>
